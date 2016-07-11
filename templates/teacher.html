@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生成绩管理系统 - 老师</title>
+</head>
+<body>
+<h1> welcome {{ tea.teacher_name }} !</h1>
+  <ul>
+    <li><a href="{% url 'get_teacher_info' tea.teacher_id %}">基本信息</a></li>
+    <li><a href="{% url 'input_student_id' tea.teacher_id %}">查询单个学生成绩</a></li>
+    <li><a href="{% url 'get_all_grades_by_teacher' tea.teacher_id %}">查询所有学生成绩</a></li>
+      <li><a href="{% url 'insert_grade_front' tea.teacher_id %}">录入修改成绩</a></li>
+      <li><a href="{% url 'input_new_password' tea.teacher_id %}">修改密码</a></li>
+      <li><a href="{% url 'choose_class' tea.teacher_id %}">获取学生成绩分布统计图</a></li>
+      <li><a href="{% url 'find_average_by_courseName' tea.teacher_id %}">各科平均成绩比较统计图</a></li>
+      <li><a href="{% url 'home' %}">退出登陆</a></li>
+  </ul>
+</body>
+</html>

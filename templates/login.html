@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="http://getsoloapp.com/css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700|Montserrat:400,700' rel='stylesheet'
+          type='text/css'>
+    <script type='text/javascript'>
+        function login() {
+            if (document.loginForm.login_type.value == "") {
+                alert("请选择登陆类型");
+                return;
+            }
+            else if (document.loginForm.password.value == "") {
+                alert("请输入您的密码");
+                return;
+            }
+            else if (document.loginForm.username.value == "") {
+                alert("请输入您的账号");
+                return;
+            }
+            else
+                document.loginForm.submit();
+        }
+    </script>
+
+    <title>学生成绩管理系统 - 登陆</title>
+</head>
+
+<body onload="message()" data-page="download"
+      data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+<div class="main-container">
+    <div class="row download-wrapper ">
+
+        <section class="container download-form-section">
+
+            <div id="download-form-wrapper" class="col-lg-6 col-lg-offset-3 field">
+                <h3>请选择身份类型并登录.</h3>
+
+                <div class="lead">
+
+
+                    <form method="post" name="loginForm" action="{% url 'login_action' %}" onsubmit="return login();">
+                        {% csrf_token %}
+                        <input type="radio" name="login_type" value="0"/>学生
+                        <input type="radio" name="login_type" value="1"/>老师<br/>
+                        <div class="input-with-icon">
+                            <input id="user" type="text" name="username" placeholder="username" required="required">
+                            <p></p>
+                            <input id="password" type="text" name="password" placeholder="password"
+                                   required="required">
+                        </div>
+
+                        <button class="btn btn--primary" type="submit">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <h4>{{ mention }}</h4>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <footer class="footer-3 bg--white text-center-xs">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6 text-center">
+            &nbsp;
+        </div>
+        <div class="col-sm-3 text-right text-center-xs">
+
+            <span class="type--fine-print">© Copyright <span class="update-year">2016</span> .</span>
+        </div>
+    </footer>
+
+</div>
+<script src="http://getsoloapp.com/js/jquery-2.1.4.min.js"></script>
+<script src="http://getsoloapp.com/js/owl.carousel.min.js"></script>
+<script src="http://getsoloapp.com/js/scrollreveal.min.js"></script>
+<script src="http://getsoloapp.com/js/parallax.js"></script>
+<script src="http://getsoloapp.com/js/scripts.js"></script>
+
+</body>
+</html>
+
+

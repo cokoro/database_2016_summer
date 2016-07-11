@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>学生成绩管理系统 - 获取成绩图</title>
+</head>
+<body>
+{{ mention }}<br>
+<h3>选择课程输出学生成绩分布</h3>
+<form method="post" name="input" action="{% url 'find_grade_distribution' teacher_id%}" >
+    {% csrf_token %}
+    <br>
+     课程名  : <select name="cour_name">
+    {% for course in course_set %}
+             <option value={{ course.course_name }}>{{ course.course_name }}</option>
+    {% endfor %}
+            </select>
+    <br>
+    <br>
+    <input type="submit" value="确定"/>
+
+    </form>
+<br>
+<div>
+    <a href="{% url "teacher_home" teacher_id %}">返回首页</a>
+</div>
+</body>
+</html>

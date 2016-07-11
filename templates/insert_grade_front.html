@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <script type='text/javascript'>
+        function input() {
+            if (document.input.student_id.value == "") {
+                alert("学生学号不能为空");
+                return;
+            }
+            else
+                document.input.submit();
+        }
+    </script>
+    <title>学生成绩管理系统 - 插入学生成绩</title>
+</head>
+<body>
+
+<div>
+<form method="post" name="input" action="{% url 'insert_grade_action' teacher_id %}" onsubmit="return input();">
+    {% csrf_token %}
+    <br>
+    学生学号: <select name="student_id">
+    {% for stu in student_set %}
+             <option value={{ stu.student_id }}>{{ stu.student_id }}</option>
+    {% endfor %}
+            </select>
+    <br>
+     课程名    : <select name="course_name">
+    {% for course in course_set %}
+             <option value={{ course.course_name }}>{{ course.course_name }}</option>
+    {% endfor %}
+            </select>
+    <br>
+    学生成绩：<input type="text" name="grade"/><br>
+
+    <input type="submit" value="确定"/>
+    </form>
+<br>
+</div>
+<div>{{ mention }}</div>
+<input type="button" value="Back" onclick="history.back()"/>
+</body>
+</html>

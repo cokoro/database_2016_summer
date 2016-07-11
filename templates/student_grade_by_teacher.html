@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生成绩管理系统 - 成绩</title>
+</head>
+<body>
+<h2>{{ stu.student_name }}的成绩列表</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>学年</th>
+        <th>课程号</th>
+        <th>课程名</th>
+        <th>学分</th>
+        <th>成绩</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sc in courseSet %}
+        <tr>
+            <td>{{ sc.school_year }}</td>
+            <td>{{ sc.course_id }}</td>
+            <td>{{ sc.course_name }}</td>
+            <td>{{ sc.course_credit }}</td>
+            <td>{{ sc.grade }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<input type="button" value="Back" onclick="history.back()"/>
+</body>
+</html>

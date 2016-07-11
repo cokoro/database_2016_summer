@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ tea.teacher_name }}的基本信息</title>
+</head>
+<body>
+    <li>职工号：{{ tea.teacher_id }}</li>
+    <li>姓名：{{tea.teacher_name}}</li>
+    <li>性别：{{ tea.sex }}</li>
+    <li>职称：{{ tea.profession}}</li>
+    <li>学院：{{ tea.department_id.department_name }}</li>
+    <li>电话：{{ tea.telephone }}</li>
+<br>
+<input type="button" value="Back" onclick="history.back()"/>
+</body>
+</html>

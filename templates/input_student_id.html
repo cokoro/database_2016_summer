@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <script type='text/javascript'>
+        function input() {
+            if (document.input.student_id.value == "") {
+                alert("学生学号不能为空");
+                return;
+            }
+            else
+                document.input.submit();
+        }
+    </script>
+
+    <title>查询单个学生信息</title>
+</head>
+<body>
+
+<form method="post" name="input" action="{% url 'get_student_grade_by_teacher' teacher_id %}" onsubmit="return input();">
+    {% csrf_token %}
+    学生学号: <input type="text" name="student_id"/><br>
+    <input type="submit" value="查询"/>
+</form>
+<br>
+<h3>{{ mention }}</h3>
+
+<div>
+    <a href="{% url "teacher_home" teacher_id %}">返回首页</a>
+</div>
+
+</body>
+</html>

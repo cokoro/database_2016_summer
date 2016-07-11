@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生成绩管理系统-学生</title>
+</head>
+<body>
+<h1> welcome {{ stu.student_name }} !</h1>
+  <ul>
+    <li><a href="{% url 'get_student_info' stu.student_id %}">基本信息</a></li>
+    <li><a href="{% url 'get_student_grade' stu.student_id %}">查看成绩</a></li>
+      <li><a href="{% url 'input_student_new_password' stu.student_id %}">修改密码</a></li>
+      <li><a href="{% url 'home' %}">退出登陆</a></li>
+    </ul>
+</body>
+</html>
