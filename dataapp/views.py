@@ -230,11 +230,11 @@ def insert_grade(request, teacher_id):
     student = StudentInfo.objects.get(student_id = student_id)
     course = CourseInfo.objects.get(course_name = course_name)
     teacher=TeacherInfo.objects.get(teacher_id=teacher_id)
-    print(course.course_id,course_name)
-    print(student)
+    #print(course.course_id,course_name)
+    #print(student)
     info = TeacherCourse.objects.get(course_id = course.course_id)
-    print(info.teacher_id)
-    print(teacher_id)
+    #print(info.teacher_id)
+    #print(teacher_id)
     if (student == None):
         return HttpResponse('该学生不存在')
     if (str(teacher_id) != str(info.teacher_id)):
@@ -246,9 +246,9 @@ def insert_grade(request, teacher_id):
         return HttpResponse('输入的成绩不合法')
 
     try:
-        print(student)
+        #print(student)
         record = StudentCourse.objects.get(student_id = student, course_id = course)
-        print(record)
+        #print(record)
         record.grade = grade
         record.save()
         return HttpResponse('更新成功')
@@ -260,12 +260,15 @@ def insert_grade(request, teacher_id):
 
 
 def find_average_by_courseName(request,teacher_id):
-    result={}
+    result={}#最后未使用到
     courses = CourseInfo.objects.all()
     for course in courses:
         result[course.course_name] = StudentCourse.objects.filter(course_id = course.course_id).aggregate(Avg('grade'))
-    print(result)
-    return render(request,"find_average_by_courseName.html",{"result":result,"teacher_id":teacher_id})
+        course.average=StudentCourse.objects.filter(course_id = course.course_id).aggregate(Avg('grade'))['grade__avg']
+        #print(course.average)
+        #print(result[course.course_name]['grade__avg'])
+    #print(courses)
+    return render(request,"find_average_by_courseName.html",{"result":result,"teacher_id":teacher_id,"courses":courses})
 
 
 
@@ -276,14 +279,20 @@ def find_grade_distribution(request,teacher_id):
 
     course = CourseInfo.objects.get(course_name = cour_name)
     grades = StudentCourse.objects.filter(course_id = course.course_id)
-    result = {}
-    result['_less_60_'] = grades.filter(grade__lt = 60).count()
-    result['_60_to_70_'] = grades.filter(grade__gt = 60, grade__lt = 70).count()
-    result['70_to_80_'] = grades.filter(grade__gt = 70, grade__lt = 80).count()
-    result['_80_to_90_'] = grades.filter(grade__gt = 80, grade__lt = 90).count()
-    result['_more_90'] = grades.filter(grade__gt = 90).count()
-    print(result)
-    return render(request,"show_course_distribute_graph.html",{"result":result,"cour_name":cour_name})
+    result = {}  #未使用，在html中使用字典额方法未掌握
+    result['less_60_'] = grades.filter(grade__lt = 60).count()
+    course.less_60_=grades.filter(grade__lt = 60).count()
+    result['from_60_to_70_'] = grades.filter(grade__gt = 60, grade__lt = 70).count()
+    course.from_60_to_70_=grades.filter(grade__gt = 60, grade__lt = 70).count()
+    result['from_70_to_80_'] = grades.filter(grade__gt = 70, grade__lt = 80).count()
+    course.from_70_to_80_=grades.filter(grade__gt = 70, grade__lt = 80).count()
+    result['from_80_to_90_'] = grades.filter(grade__gt = 80, grade__lt = 90).count()
+    course.from_80_to_90_=grades.filter(grade__gt = 80, grade__lt = 90).count()
+    result['more_90_'] = grades.filter(grade__gt = 90).count()
+    course.more_90_=grades.filter(grade__gt = 90).count()
+    #print(result)
+    #print(course.from_60_to_70_)
+    return render(request,"show_course_distribute_graph.html",{"result":result,"course":course,"teacher_id":teacher_id})
 
 
 def choose_course(request,teacher_id):

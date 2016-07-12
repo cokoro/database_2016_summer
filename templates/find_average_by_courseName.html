@@ -5,8 +5,87 @@
     <title>学生成绩管理系统 - 各科平均成绩比较</title>
 </head>
 <body>
+      <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:500px" style="width: 100px" ></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/line'
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
 
-
+                var option = {
+                    title:{
+                        text:'各科成绩平均分'
+                    },
+                    tooltip: {
+                        trigger:'axis',
+                        show: true
+                    },
+                    legend: {
+                        data:['平均分']
+                    },
+                    toolbox:{
+                      show:true,
+                        feature:{
+                            mark:{show:true},
+                            dataView:{show:true,readOnly:false},
+                            magicType:{show:true,type:['bar','line']},
+                            restore:{show:true},
+                            saveAsImage:{show:true}
+                        }
+                    },
+                    calculable:true,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            //boundaryGap:true,
+                            data:[{% for cs in courses %}'{{ cs.course_name }}'{% if not forloop.last %},{% endif %}{% endfor %}]
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                             name:"平均分",
+                             type:"bar",
+                            //"data":[5, 20, 40, 10, 10, 20]
+                             data:[{% for cs in courses %}'{{  cs.average }}'{% if not forloop.last %},{% endif %}{% endfor %}],
+                            makePoint:{
+                                data:[
+                                    {type:'max',name:'最大值'},
+                                    {type:'min',name:'最小值'}
+                                ]
+                            },
+                            makeLine:{
+                                data:[
+                                    {type:'average',name:'平均值'}
+                                ]
+                            }
+                        }
+                    ]
+                };
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+        );
+    </script>
 
 <a href="{% url "teacher_home" teacher_id %}">返回首页</a>
 </body>

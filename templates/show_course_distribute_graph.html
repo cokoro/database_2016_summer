@@ -1,10 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>学生成绩管理系统 - {{ cour_name }}成绩分布图</title>
+    <title>学生成绩管理系统 - {{ course.cour_name }}成绩分布图</title>
 </head>
 <body>
+
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie', // 使用饼就加载pie模块，按需加载
+                'echarts/chart/funnel' // 使用柱状图就加载模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+
+                var option = {
+                    title:{
+                        text:'{{ course.cour_name }}的成绩分布情况',
+                        x:'center'
+                    },
+                    tooltip: {
+                        trigger:'item',
+                        formatter:"{a}<br/>{b}:{c}({d}%"
+                    },
+                    legend: {
+                        orient:'vertical',
+                        x:'left',
+                        data:['less_60_','from_60_to_70_','from_70_to_80_','from_80_to_90_','more_90_']
+                    },
+                    toolbox:{
+                      show:true,
+                        feature:{
+                            mark:{show:true},
+                            dataView:{show:true,readOnly:false},
+                            magicType:{
+                                show:true,
+                                type:['pie','funnel'],
+                                option:{
+                                    funnel:{
+                                        x:'25%',
+                                        width:'50%',
+                                        funnelAlign:'left',
+                                        max:1548
+                                    }
+                                }
+                            },
+                            restore:{show:true},
+                            saveAsImage:{show:true}
+                        }
+                    },
+                    calculable:true,
+
+                    series : [
+                        {
+                             name:"成绩分布",
+                             type:"pie",
+                            radius:'55%',
+                            center:['50%','60%'],
+                            //"data":[5, 20, 40, 10, 10, 20]
+                             data:[
+                                 {value:{{ course.less_60_ }},name:'less_60_'},
+                                 {value:{{ course.from_60_to_70_ }},name:'from_60_to_70_'},
+                                 {value:{{ course.from_70_to_80_ }},name:'from_70_to_80'},
+                                 {value:{{ course.from_80_to_90_ }},name:'from_80_to_90_'},
+                                 {value:{{ course.more_90_ }},name:'more_90_'}
+                             ]
+                        }
+                    ]
+                };
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+        );
+    </script>
+
+<a href="{% url "teacher_home" teacher_id %}">返回首页</a>
 
 </body>
 </html>
