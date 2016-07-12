@@ -1,20 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>学生成绩管理系统 - 老师</title>
+
+
+    <title>Pixelapse - Visual version control for designers</title>
+    <meta content="authenticity_token" name="csrf-param"/>
+    <meta content="6RgHbII3PYxrScTXfkIghKVKQ0TvmjfMPWcn3LJ6jqA=" name="csrf-token"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="viewport" content="width=480px; initial-scale=0.5; maximum-scale=1.0;"/>
+
+    <link href="https://d340syr2dan8gj.cloudfront.net/assets/application-65a009b5bdf7f2ca0906dae6a2f01be1.css"
+          media="screen" rel="stylesheet"/>
+
+
 </head>
-<body>
-<h1> welcome {{ tea.teacher_name }} !</h1>
-  <ul>
-    <li><a href="{% url 'get_teacher_info' tea.teacher_id %}">基本信息</a></li>
-    <li><a href="{% url 'input_student_id' tea.teacher_id %}">查询单个学生成绩</a></li>
-    <li><a href="{% url 'get_all_grades_by_teacher' tea.teacher_id %}">查询所有学生成绩</a></li>
-      <li><a href="{% url 'insert_grade_front' tea.teacher_id %}">录入修改成绩</a></li>
-      <li><a href="{% url 'input_new_password' tea.teacher_id %}">修改密码</a></li>
-      <li><a href="{% url 'choose_class' tea.teacher_id %}">获取学生成绩分布统计图</a></li>
-      <li><a href="{% url 'find_average_by_courseName' tea.teacher_id %}">各科平均成绩比较统计图</a></li>
-      <li><a href="{% url 'home' %}">退出登陆</a></li>
-  </ul>
+<body class="landing ">
+
+  <div class="landing-section-border">
+      <div class="landing-section landing-section-compare">
+        <div class="row">
+          <h2>Try it out</h2>
+          <p>
+            Sign up for a free personal account. No strings attached.
+          </p>
+        </div>
+      </div>
+    </div>
+<footer>
+    <div class="footer-top">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-globe icon-28"></i>
+                    <a href="{% url 'get_teacher_info' tea.teacher_id %}">
+                        <strong>基本信息</strong>
+                        <p>
+                            <small>Explore public open source design projects</small>
+                        </p>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-globe icon-28"></i>
+                    <h4>Community</h4>
+                    <a href="/explore">
+                        <strong>查看学生信息</strong>
+                        <p>
+                            <small>Explore public open source design projects</small>
+                        </p>
+                    </a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-toolkit icon-28"></i>
+                    <h4>Resources</h4>
+                    <a href="https://toolbelt.pixelapse.com">
+                        <strong>The Design Toolbelt</strong>
+                        <p>
+                            <small>Image Inspector, Color Picker, Lorem Ipsum, and more</small>
+                        </p>
+                    </a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-broadcast icon-28"></i>
+                    <h4>Connect</h4>
+                    <a href="/contact">
+                        <strong>Say hello!</strong>
+                    </a>
+                    <a href="http://blog.pixelapse.com">
+                        <strong>Pixelapse Blog</strong>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+<div class="footer-top">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-globe icon-28"></i>
+                    <a href="{% url 'get_teacher_info' tea.teacher_id %}">
+                        <strong>基本信息</strong>
+                        <p>
+                            <small>Explore public open source design projects</small>
+                        </p>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-globe icon-28"></i>
+                    <h4>Community</h4>
+                    <a href="/explore">
+                        <strong>查看学生信息</strong>
+                        <p>
+                            <small>Explore public open source design projects</small>
+                        </p>
+                    </a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-toolkit icon-28"></i>
+                    <h4>Resources</h4>
+                    <a href="https://toolbelt.pixelapse.com">
+                        <strong>The Design Toolbelt</strong>
+                        <p>
+                            <small>Image Inspector, Color Picker, Lorem Ipsum, and more</small>
+                        </p>
+                    </a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="icon-broadcast icon-28"></i>
+                    <h4>Connect</h4>
+                    <a href="/contact">
+                        <strong>Say hello!</strong>
+                    </a>
+                    <a href="http://blog.pixelapse.com">
+                        <strong>Pixelapse Blog</strong>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

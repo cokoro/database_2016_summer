@@ -1,16 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>学生成绩管理系统-学生</title>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="http://getsoloapp.com/css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700|Montserrat:400,700' rel='stylesheet'
+          type='text/css'>
+
+    <title>学生成绩管理系统 - 学生</title>
 </head>
-<body>
-<h1> welcome {{ stu.student_name }} !</h1>
-  <ul>
-    <li><a href="{% url 'get_student_info' stu.student_id %}">基本信息</a></li>
-    <li><a href="{% url 'get_student_grade' stu.student_id %}">查看成绩</a></li>
-      <li><a href="{% url 'input_student_new_password' stu.student_id %}">修改密码</a></li>
-      <li><a href="{% url 'home' %}">退出登陆</a></li>
-    </ul>
+
+<body onload="message()" data-page="download"
+      data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+<div class="main-container">
+    <div class="row download-wrapper ">
+
+        <section class="container download-form-section">
+
+            <div id="download-form-wrapper" class="col-lg-6 col-lg-offset-3 field">
+                <h1> Welcome {{ stu.student_name }} !</h1>
+
+                <div class="lead">
+                    <ul class="lead">
+                        <button class="btn btn--primary" ><a href="{% url 'get_student_info' stu.student_id %}">基本信息</a></button><br/>
+                        <button class="btn btn--primary" ><a href="{% url 'get_student_grade' stu.student_id %}">查看成绩</a></button><br/>
+                        <button class="btn btn--primary" ><a href="{% url 'input_student_new_password' stu.student_id %}">修改密码</a></button><br/>
+                        <button class="btn btn--primary" ><a href="{% url 'home' %}">退出登陆</a></button><br/>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+
+    <footer class="footer-3 bg--white text-center-xs">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6 text-center">
+            &nbsp;
+        </div>
+        <div class="col-sm-3 text-right text-center-xs">
+
+            <span class="type--fine-print">© Copyright <span class="update-year">2016</span> .</span>
+        </div>
+    </footer>
+
+</div>
+<script src="http://getsoloapp.com/js/jquery-2.1.4.min.js"></script>
+<script src="http://getsoloapp.com/js/owl.carousel.min.js"></script>
+<script src="http://getsoloapp.com/js/scrollreveal.min.js"></script>
+<script src="http://getsoloapp.com/js/parallax.js"></script>
+<script src="http://getsoloapp.com/js/scripts.js"></script>
+
 </body>
 </html>
