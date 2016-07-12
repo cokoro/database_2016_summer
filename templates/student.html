@@ -1,59 +1,85 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>登录</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="http://getsoloapp.com/css/styles.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700|Montserrat:400,700' rel='stylesheet'
-          type='text/css'>
-
-    <title>学生成绩管理系统 - 学生</title>
+    <title>学生成绩管理系统 - l老师</title>
+    <link href="https://d340syr2dan8gj.cloudfront.net/assets/application-65a009b5bdf7f2ca0906dae6a2f01be1.css"
+          media="screen" rel="stylesheet"/>
+<style>
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+    font-size:270%;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>
 </head>
+<body class="landing ">
 
-<body onload="message()" data-page="download"
-      data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
-<div class="main-container">
-    <div class="row download-wrapper ">
+  <div class="landing-section-border">
+      <div class="landing-section landing-section-compare">
+        <div class="row">
+          <h2> Welcome {{ stu.student_name }} !</h2>
+        </div>
+      </div>
+    </div>
+<footer>
+    <div class="footer-top">
+        <div class="container">
 
-        <section class="container download-form-section">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <i class="glyphicon glyphicon-heart"></i>
+                    <a href="{% url 'get_student_info' stu.student_id %}">
+                        <strong>基本信息</strong>
+                        <p>
+                            <small>The basic information</small>
+                        </p>
+                    </a>
+                </div>
 
-            <div id="download-form-wrapper" class="col-lg-6 col-lg-offset-3 field">
-                <h1> Welcome {{ stu.student_name }} !</h1>
 
-                <div class="lead">
-                    <ul class="lead">
-                        <button class="btn btn--primary" ><a href="{% url 'get_student_info' stu.student_id %}">基本信息</a></button><br/>
-                        <button class="btn btn--primary" ><a href="{% url 'get_student_grade' stu.student_id %}">查看成绩</a></button><br/>
-                        <button class="btn btn--primary" ><a href="{% url 'input_student_new_password' stu.student_id %}">修改密码</a></button><br/>
-                        <button class="btn btn--primary" ><a href="{% url 'home' %}">退出登陆</a></button><br/>
-                    </ul>
+                <div class="col-xs-6 col-md-3">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <h4>Community</h4>
+                        <a href="{% url 'get_student_grade' stu.student_id %}">
+                            <strong>查询成绩</strong>
+                        <p>
+                            <small>Single student achievement query</small>
+                        </p>
+                    </a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <h4>Community</h4>
+                    <a href="{% url 'input_student_new_password' stu.student_id %}"><strong>修改密码</strong>
+                        <p>
+                            <small>Change the password</small>
+                        </p>
+                    </a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <i class="glyphicon glyphicon-share-alt"></i>
+                    <h4>Connect</h4>
+                    <a href="{% url 'home' %}"><strong>退出登录</strong>
+                        <p>
+                            <small>Log out</small>
+                        </p>
+                    </a>
                 </div>
 
             </div>
-        </section>
+
+        </div>
     </div>
-
-
-    <footer class="footer-3 bg--white text-center-xs">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-6 text-center">
-            &nbsp;
-        </div>
-        <div class="col-sm-3 text-right text-center-xs">
-
-            <span class="type--fine-print">© Copyright <span class="update-year">2016</span> .</span>
-        </div>
-    </footer>
-
-</div>
-<script src="http://getsoloapp.com/js/jquery-2.1.4.min.js"></script>
-<script src="http://getsoloapp.com/js/owl.carousel.min.js"></script>
-<script src="http://getsoloapp.com/js/scrollreveal.min.js"></script>
-<script src="http://getsoloapp.com/js/parallax.js"></script>
-<script src="http://getsoloapp.com/js/scripts.js"></script>
+</footer>
 
 </body>
 </html>
