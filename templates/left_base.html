@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{{ stu.student_name }}的基本信息</title>
+    <title>{%  block title %}{%  endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="http://getsoloapp.com/css/styles.css" rel="stylesheet" type="text/css" media="all"/>
@@ -22,16 +22,7 @@
 
             <div class="col-lg-8 col-lg-offset-2 ">
 
-
-                <p></p>
-
-                <ul>
-                     <li>学号：{{ stu.student_id }}</li>
-    <li>姓名：{{ stu.student_name}}</li>
-    <li>班级：{{ stu.class_id_id }}</li>
-    <li>性别：{{ stu.sex}}</li>
-    <li>专业：{{ stu.major }}</li>
-                </ul>
+                {% block main_content %}{%  endblock %}
             </div>
 
 

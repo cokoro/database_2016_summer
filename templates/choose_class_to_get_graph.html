@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-
-    <title>学生成绩管理系统 - 获取成绩图</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}学生成绩管理系统 - 获取成绩图{% endblock %}
+{%  block main-content %}
 {{ mention }}<br>
 <h3>选择课程输出学生成绩分布</h3>
 <form method="post" name="input" action="{% url 'find_grade_distribution' teacher_id%}" >
@@ -25,5 +20,4 @@
 <div>
     <a href="{% url "teacher_home" teacher_id %}">返回首页</a>
 </div>
-</body>
-</html>
+{%  endblock %}

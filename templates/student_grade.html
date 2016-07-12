@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>成绩</title>
+
+
+    <title>学生成绩管理系统 - l老师</title>
+    <meta content="authenticity_token" name="csrf-param"/>
+    <meta content="6RgHbII3PYxrScTXfkIghKVKQ0TvmjfMPWcn3LJ6jqA=" name="csrf-token"/>
+
+    <link href="https://d340syr2dan8gj.cloudfront.net/assets/application-65a009b5bdf7f2ca0906dae6a2f01be1.css"
+          media="screen" rel="stylesheet"/>
+    <style type="text/css">
+        th
+        {
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-<h2>{{ student.student_name }}的成绩列表</h2>
-<table border="1">
+<body class="landing ">
+
+  <div class="landing-section-border">
+      <div class="landing-section landing-section-compare">
+        <div class="row">
+            <h2>{{ student.student_name }}的成绩列表</h2>
+<table style="margin:auto" class="table">
     <thead>
-    <tr>
+    <tr style="text-align:center">
         <th>学年</th>
         <th>课程号</th>
         <th>课程名</th>
@@ -31,6 +47,13 @@
     </tbody>
 </table>
 <br>
-<input type="button" value="Back" onclick="history.back()"/>
+        <button class="btn btn--primary" type="submit" onclick="history.back()" style="background-color: aliceblue; color:black">
+                            Back
+                        </button>
+        </div>
+      </div>
+    </div>
+
+
 </body>
 </html>

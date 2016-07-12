@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <title>{%  block title %}{% endblock %}</title>
+    <meta content="authenticity_token" name="csrf-param"/>
+    <meta content="6RgHbII3PYxrScTXfkIghKVKQ0TvmjfMPWcn3LJ6jqA=" name="csrf-token"/>
+
+    <link href="https://d340syr2dan8gj.cloudfront.net/assets/application-65a009b5bdf7f2ca0906dae6a2f01be1.css"
+          media="screen" rel="stylesheet"/>
+    <style type="text/css">
+        th
+        {
+            text-align: center;
+        }
+        table
+        {
+            margin: auto;
+        }
+    </style>
+        {%  block js %}{% endblock %}
+</head>
+<body class="landing ">
+
+  <div class="landing-section-border">
+      <div class="landing-section landing-section-compare">
+        <div class="row">
+            {%  block main-content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+
+
+</body>
+</html>

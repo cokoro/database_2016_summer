@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>成绩</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}成绩{%  endblock %}
+{%  block main-content %}
 <h2>成绩列表</h2>
 
     {% for student in grades %}
-        <table border="1">
+        <table class="table">
          <thead>
     <tr>
         <th>学号</th>
@@ -42,5 +38,4 @@
 <div>
 <input type="button" value="Back" onclick="history.back()"/>
 </div>
-</body>
-</html>
+{% endblock %}
